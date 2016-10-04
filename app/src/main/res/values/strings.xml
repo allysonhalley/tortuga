@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">TortugAlpha</string>
+    <string name="main">Tortuga</string>
+    <!--Longin-->
+    <string name="edit_login">Login</string>
+    <string name="edit_senha">Senha</string>
+    <string name="button_login">Entrar</string>
+
+    <!--Cliente-->
+    <string name="txt_button_request_truck">Solicitar Caminhão</string>
+    <string name="view_log">Vizualizar Histórico</string>
+    <string name="call_atendent">Ligar para Atendente</string>
+
+    <!--Solicitar Caminhão-->
+    <string name="text_top_request_truck">Marque o tipo de material e insira a quantidade</string>
+    <string name="check_material_name">Tipo Material</string>
+    <string name="quantity_material_input">Quantidade Material</string>
+
+    <!--Cadastrar Cliente-->
+    <string name="title_register_customer">Cadastrar Cliente</string>
+    <string name="name_register_customer">Nome</string>
+    <string name="cpf_register_customer">CPF</string>
+    <string name="email_register_customer">E-Mail</string>
+    <string name="phone_register_customer">Telefone</string>
+    <string name="dt_borned_register_customer">Data de Nascimento</string>
+
+    <!--Endereço-->
+    <string name="register_adress">Cadastrar Endereço</string>
+    <string name="address_register_customer">Endereço</string>
+    <string name="cep_register_adress">CEP</string>
+    <string name="street_register_adress">Street</string>
+    <string name="numb_register_adress">Número</string>
+    <string name="complement_register_adress">Complemento</string>
+    <string name="neighborhood_register_adress">Bairro</string>
+    <string name="city_register_adress">Cidade</string>
+    <string name="state_register_adress">Estado</string>
+    <string name="country_register_adress">País</string>
+
+
+
+
+</resources>

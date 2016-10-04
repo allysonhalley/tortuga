@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.com.ahsr.tortugalpha.MainActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:layout_marginTop="250dp"
+        android:hint="@string/edit_login"
+        android:id="@+id/edit_login"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberPassword"
+        android:ems="10"
+        android:hint="@string/edit_senha"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/edit_login"
+        android:layout_alignStart="@+id/edit_login"
+        android:id="@+id/edit_senha" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/tortuga"
+        android:id="@+id/imagemTortugaLogin"
+        android:layout_marginBottom="58dp"
+        android:layout_above="@+id/edit_senha"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_login"
+        android:hint="@string/button_login"
+        android:clickable="false"
+        android:onClick="callCustomerFromMain"
+        android:layout_below="@+id/edit_senha"
+        android:layout_alignStart="@+id/edit_senha" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:layout_below="@+id/button_login"
+        android:layout_toEndOf="@+id/edit_senha"
+        android:onClick="callAddCustomerFromMain"
+        android:id="@+id/button_add_customer" />
+
+</RelativeLayout>
