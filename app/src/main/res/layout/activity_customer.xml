@@ -20,7 +20,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="TextViewCustomerName"
+        android:text="@string/title_customer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -37,13 +37,15 @@
         android:onClick="requestTruckFromCustomer"
         android:id="@+id/button_request_truck"/>
 
+
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         app:fabSize="mini"
         app:srcCompat="@android:drawable/sym_action_call"
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/button_customer_atendent_call"
+        android:onClick="callCustomerToAtendent"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="117dp" />
@@ -52,17 +54,20 @@
         android:text="@string/view_log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:id="@+id/button_view_log"
         android:layout_below="@+id/button_request_truck"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:id="@+id/btViewLog" />
+        android:onClick="viewLogRequesCustomer"
+        android:layout_alignStart="@+id/button_request_truck" />
 
     <TextView
         android:text="@string/call_atendent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/floatingActionButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp"
-        android:id="@+id/txCallAtendent" />
+        android:layout_marginTop="67dp"
+        android:id="@+id/txCallAtendent"
+        android:layout_alignTop="@+id/button_customer_atendent_call"
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>

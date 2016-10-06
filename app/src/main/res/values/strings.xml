@@ -3,7 +3,8 @@
     <string name="main">Tortuga</string>
     <!--Longin-->
     <string name="edit_login">Login</string>
-    <string name="edit_senha">Senha</string>
+    <string name="edit_user_name">Usuário</string>
+    <string name="edit_password">Senha</string>
     <string name="button_login">Entrar</string>
 
     <!--Cliente-->
@@ -17,7 +18,9 @@
     <string name="quantity_material_input">Quantidade Material</string>
 
     <!--Cadastrar Cliente-->
+    <string name="title_customer">Cliente</string>
     <string name="title_register_customer">Cadastrar Cliente</string>
+    <string name="register_customer">Cadastrar</string>
     <string name="name_register_customer">Nome</string>
     <string name="cpf_register_customer">CPF</string>
     <string name="email_register_customer">E-Mail</string>
@@ -36,7 +39,9 @@
     <string name="state_register_adress">Estado</string>
     <string name="country_register_adress">País</string>
 
-
-
+    <!--Atendent-->
+    <string name="title_atendent">Atendente</string>
+    <string name="floating_recall_customer">Ligar para Cliente</string>
+    <string name="floating_call_driver">Ligar para Motorista</string>
 
 </resources>
