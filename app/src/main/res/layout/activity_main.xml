@@ -9,57 +9,64 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="br.com.ahsr.tortugalpha.MainActivity">
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:layout_marginTop="250dp"
-        android:hint="@string/edit_user_name"
-        android:id="@+id/edit_user_name"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberPassword"
-        android:ems="10"
-        android:hint="@string/edit_password"
-        android:layout_marginTop="12dp"
-        android:layout_below="@+id/edit_user_name"
-        android:layout_alignStart="@+id/edit_user_name"
-        android:id="@+id/edit_password" />
+    tools:context="br.com.ahsr.tortuga30.MainActivity">
 
     <ImageView
+        android:id="@+id/tortugaSymbolCustomer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/tortuga"
-        android:id="@+id/imagemTortugaLogin"
-        android:layout_marginBottom="58dp"
-        android:layout_above="@+id/edit_password"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@mipmap/logo_tortuga" />
+
+    <TextView
+        android:id="@+id/textViewCustomerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/title_customer" />
 
     <Button
+        android:id="@+id/button_request_truck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button_login"
-        android:hint="@string/button_login"
-        android:onClick="onClick"
-        android:layout_below="@+id/edit_password"
-        android:layout_alignStart="@+id/edit_password" />
+        android:layout_below="@+id/tortugaSymbolCustomer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:onClick="requestTruckFromCustomer"
+        android:text="@string/txt_button_request_truck" />
+
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_customer_atendent_call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="117dp"
         android:clickable="true"
+        android:onClick="callCustomerToAtendent"
         app:fabSize="mini"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:layout_below="@+id/button_login"
-        android:layout_toEndOf="@+id/edit_password"
-        android:onClick="onClick"
-        android:id="@+id/button_add_customer" />
+        app:srcCompat="@android:drawable/sym_action_call" />
+
+    <Button
+        android:id="@+id/button_view_log"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button_request_truck"
+        android:layout_below="@+id/button_request_truck"
+        android:layout_marginTop="22dp"
+        android:onClick="viewLogRequesCustomer"
+        android:text="@string/view_log" />
+
+    <TextView
+        android:id="@+id/txCallAtendent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button_customer_atendent_call"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp"
+        android:text="@string/call_atendent" />
 
 </RelativeLayout>
