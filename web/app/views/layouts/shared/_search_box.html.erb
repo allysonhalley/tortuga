@@ -1,0 +1,43 @@
+<div class="box-header with-border">
+  <h3 class="box-title">
+    <strong>
+      <%= StrHelper.model_i18n(:other, model) %>
+    </strong>
+  </h3>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <%= search_form_for @q do |f| %>
+        <div class="input-group input-group-sm">
+          <%= f.search_field search_match, class: "form-control" %>
+            <span class="input-group-btn">
+              <button type="submite" class="btn btn-default btn-flat">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+        </div>
+      <% end %>
+    </div>
+    <% if model == :requirement %>      
+        <div class="col-md-6">
+          <% requestables.each do |requestable| %>
+            <% if requestable[:model] == :munition_acquisition %>              
+              <%= render 'shared/modal_select_owner' %>
+            <% else %>
+              <%= link_to "<i class='fa fa-plus-square'></i> #{StrHelper.model_i18n(:one, requestable[:model])}".html_safe,
+                { controller: requestable[:controller], action: :new },
+                class: 'btn btn-primary btn-sm pull-right', title: StrHelper.tooltip_params_i18n(:add, requestable[:model], :one), 'data-toggle' => 'tooltip', 'data-placement' => 'left' %>
+            <% end %>
+          <% end %>
+        </div>      
+    <% elsif model != :weapon %>
+      <div class="col-md-6">
+        <%= link_to "<i class='fa fa-plus-square'></i> #{StrHelper.system_i18n(:add, [:helpers, :layouts])}".html_safe,
+          { controller: controller, action: :new },
+          class: 'btn btn-primary btn-sm pull-right', title: StrHelper.tooltip_params_i18n(:add, model, :one), 'data-toggle' => 'tooltip', 'data-placement' => 'left' %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+

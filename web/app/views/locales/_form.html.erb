@@ -1,0 +1,47 @@
+<%= form_for(locale) do |f| %>
+  <% if locale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(locale.errors.count, "error") %> prohibited this locale from being saved:</h2>
+
+      <ul>
+      <% locale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :street %>
+    <%= f.text_field :street %>
+  </div>
+
+  <div class="field">
+    <%= f.label :number %>
+    <%= f.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cep %>
+    <%= f.text_field :cep %>
+  </div>
+
+  <div class="field">
+    <%= f.label :complement %>
+    <%= f.text_field :complement %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lat %>
+    <%= f.text_field :lat %>
+  </div>
+
+  <div class="field">
+    <%= f.label :long %>
+    <%= f.text_field :long %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

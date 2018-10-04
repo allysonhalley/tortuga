@@ -1,0 +1,33 @@
+# Configure Using Gemfile
+# gem 'pg'
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  host: localhost
+  username: postgres
+  password: root
+  database: tortuga_dev
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  host: localhost
+  username: postgres
+  password: root
+  database: tortuga_test
+
+production:
+  <<: *default
+  host: localhost
+  username: postgres
+  password: root
+  database: tortuga_prod

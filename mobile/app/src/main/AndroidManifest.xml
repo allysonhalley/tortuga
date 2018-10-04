@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pa.allyson.tortugacollector">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo_tortuga"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".View.SplashActivity"
+            android:label="@string/main"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".View.LoginActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".View.LocaleRegisterActivity"
+            android:label="@string/title_activity_locale_register">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".View.ClientRegisterActivity"
+            android:label="@string/title_activity_client_register">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".View.ScheduleCollectionActivity"
+            android:label="@string/title_activity_schedule_collection"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".View.MaterialPhotoActivity" />
+
+        <activity
+            android:name=".View.UpdateDataClientActivity"
+            android:label="@string/title_activity_update_data_client"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.EvaluateCollectionActivity"
+            android:label="@string/title_activity_evaluate_collection"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>

@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Tortuga Collector APP</string>
+    <string name="main">Tortuga Collector APP</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_register">Registrar</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_client_register">Registrar Cliente</string>
+    <string name="title_activity_schedule_collection">ScheduleCollectionActivity</string>
+    <string name="title_activity_update_data_client">UpdateDataClientActivity</string>
+    <string name="title_activity_evaluate_collection">EvaluateCollectionActivity</string>
+
+    <!-- Strings related to Locale -->
+    <string name="tv_street">Rua</string>
+    <string name="tv_number">Numero</string>
+    <string name="tv_cep">CEP</string>
+    <string name="tv_city">Cidade-UF</string>
+    <string name="tv_latitude">Latitude</string>
+    <string name="tv_longitude">Longitude</string>
+    <string name="action_cancel">Cancelar</string>
+
+    <!-- Strings related to Client -->
+    <string name="tv_name">Nome</string>
+    <string name="tv_cpf">CPF</string>
+    <string name="sb_locale">Localização</string>
+    <string name="prompt_name">Nome</string>
+    <string name="prompt_cpf">CPF</string>
+    <string name="prompt_adress">Endereço</string>
+    <string name="prompt_street">Rua</string>
+    <string name="prompt_number">Número</string>
+    <string name="prompt_cep">CEP</string>
+    <string name="prompt_city">Cidade</string>
+    <string name="title_activity_locale_register">Registrar Endereço</string>
+    <string name="prompt_phone">Fone</string>
+
+</resources>

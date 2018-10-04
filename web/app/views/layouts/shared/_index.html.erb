@@ -1,0 +1,76 @@
+<div class="box box-info">
+  <% if model == :requirement %>
+    <%= render 'shared/search_box',
+      model: model,
+      controller: controller,
+      requestables: requestables,
+      search_match: search_match %>
+  <% else %>
+    <%= render 'shared/search_box',
+        model: model,
+        controller: controller,
+        search_match: search_match %>
+  <% end %>
+  <div class="box-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <% attributes.each do |attr| %>
+            <th>
+              <%= StrHelper.i18n_attributes(attr, model) %>
+            </th>
+          <% end %>
+          <th colspan="<%= actions.count %>"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% collection.each do |object| %>
+          <tr>
+            <% attributes.each do |attr| %>
+              <td>
+                <% if object.nil? %>
+                <% elsif object[attr] == true %>
+                  <i class="fa fa-check"></i>
+                <% elsif object[attr] == false%>
+                 <i class="fa fa-close"></i>
+                <% elsif attr.to_s.split(//).last(3).join == "_id" %>
+                  <% if object[attr].nil? %>
+                    <%= ApplicationHelper.find_object_in_object(attr.to_s.chomp("_id"), object) %>
+                  <% else %>
+                    <%= ApplicationHelper.find_object_in_collection(attr.to_s.chomp("_id"), object[attr]) %>
+                  <% end %>
+                <% elsif attr == :requestable_type %>
+                  <%= object.translate_type %>
+                <% else %>
+                  <% if attr.to_s == "name" %>
+                    <%= object.name %>
+                  <% else %>
+                    <%= object[attr] %>
+                  <% end %>                  
+                <% end %>
+              </td>
+            <% end %>
+            <td align="center">
+              <% if actions.include?(:show) %>
+                <%= link_to object, class: 'btn btn-default btn-sm', title: StrHelper.tooltip_params_i18n(:show, :helpers, :layouts), 'data-toggle' => 'tooltip', 'data-placement' => 'left' do %>
+                  <i class="fa fa-file-text"></i>
+                <% end %>
+              <% end %>
+              <% if actions.include?(:edit) %>
+                <%= link_to [:edit, object], class: 'btn btn-info btn-sm', title: StrHelper.tooltip_params_i18n(:edit, :helpers, :layouts), 'data-toggle' => 'tooltip', 'data-placement' => 'left' do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
+              <% end %>
+              <% if actions.include?(:add_weapon) %>
+                <%= render 'shared/add_weapon', object: object, owner_weapon: owner_weapon, model_weapons: model_weapons, finishings: finishings, weapon_status: weapon_status %>
+              <% end %>
+              <% if actions.include?(:delete) %>
+                <%= render 'shared/delete', object: object, identification: (object[identification_destroy] rescue object.name) %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

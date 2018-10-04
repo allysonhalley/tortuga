@@ -1,0 +1,111 @@
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= title %></h3>
+  </div>
+  <%= form_with(model: object, local: true, html: {class: 'form-horizontal'}) do |form| %>
+    <div class="box-body">
+      <% fields.each do |field| %>
+        <div class="form-group">
+          <% if field[:type] != "hidden" %>
+            <label
+              for="<%= object.model_name.to_s.downcase %>_<%= field[:name] %>"
+              class="col-sm-2 control-label"><%= StrHelper.i18n_attributes(field[:name], model) %>
+            </label>
+          <% end %>
+          <div class="col-sm-8">           
+            <% if field[:type] == "checkbox" %>
+              <input type="hidden"
+                name="<%= model.to_s.downcase %>[<%= field[:name] %>]"
+                id="<%= model.to_s.downcase %>_<%= field[:name] %>"                
+                value=false >
+              <input type="<%= field[:type] %>"
+                name="<%= model.to_s.downcase %>[<%= field[:name] %>]"
+                id="<%= model.to_s.downcase %>_<%= field[:name] %>"                
+                value=true
+                <% if field[:blocked] %>
+                  disabled=<%= :blocked %>
+                <% end %>
+                class="icheckbox_minimal-blue" <%= 'checked' if object[field[:name]] %>>
+              <ins class="iCheck-helper"></ins>
+
+            <% elsif field[:type] == "select" %>
+              <%= form.select(field[:name], field[:collection].map {|opt| [opt.name, opt.id]}, {}, {class: "form-control"}) %>              
+            <% elsif field[:type] == "hidden" %>                
+              <%= form.hidden_field( field[:name], value: field[:default]) %>
+            <% elsif field[:type] == "text_ready" %>                
+              <input type="text"
+                name="<%= model.to_s.downcase %>[<%= field[:name] %>]"
+                id="<%= model.to_s.downcase %>_<%= field[:name] %>"
+                value="<%= field[:default].name %>"
+                disabled=<%= :blocked %>
+                readonly="true"
+                class="form-control">
+            <% else %>
+              <% if field[:name].to_s.split(//).last(3).join == "_id" %>                           
+                <% if object[field].nil? %>
+                  <%= form.text_field field[:name], value: ApplicationHelper.find_object_in_object(field[:name].to_s.chomp("_id"), object), data:{inputmask: field[:inputmask].to_s, mask:field[:mask].to_s}, placeholder: field[:placeholder], class: "form-control", disabled: field[:blocked] %>
+                <% else %>
+                  <%= form.text_field field[:name], value: ApplicationHelper.find_object_in_collection(field[:name].to_s.chomp("_id"), object), data:{inputmask: field[:inputmask].to_s, mask:field[:mask].to_s}, placeholder: field[:placeholder], class: "form-control", disabled: field[:blocked] %>                  
+                <% end %>
+              <% else %>
+                <%= form.text_field field[:name], id: field[:id], type: field[:type], value: field[:value], data:{inputmask: field[:inputmask].to_s, mask:field[:mask].to_s}, placeholder: field[:placeholder], class: "form-control", disabled: field[:blocked] %>
+              <% end %>
+            <% end %>            
+          </div>
+        </div>
+      <% end %>
+      <% if ((model == :owner || model == :store) && adress != nil) %>
+        <%= form.fields_for adress do |adr| %>
+          <% adress_fields.each do |f_adr| %>
+            <div class="form-group">     
+              <%= adr.label( f_adr[:name], StrHelper.i18n_attributes(f_adr[:name], :adress), class: 'col-sm-2 control-label') %>
+              <div class="col-sm-8">
+                <% if f_adr[:type] == "text" %>
+                  <% if f_adr[:name].to_s.split(//).last(3).join == "_id" %>                              
+                    <% if object[adress_fields].nil? %>
+                      <%= adr.text_field f_adr[:name], value: ApplicationHelper.find_object_in_object(f_adr[:name].to_s.chomp("_id"), adress), data:{inputmask: f_adr[:inputmask].to_s, mask:f_adr[:mask].to_s}, placeholder: f_adr[:placeholder], class: "form-control", disabled: f_adr[:blocked] %>
+                    <% else %>
+                      <%= adr.text_field f_adr[:name], value: ApplicationHelper.find_object_in_collection(f_adr[:name].to_s.chomp("_id"), adress), data:{inputmask: f_adr[:inputmask].to_s, mask:f_adr[:mask].to_s}, placeholder: f_adr[:placeholder], class: "form-control", disabled: f_adr[:blocked] %>                  
+                    <% end %>
+                  <% else %>
+                    <%= adr.text_field f_adr[:name], id: f_adr[:id], data:{inputmask: f_adr[:inputmask].to_s, mask:f_adr[:mask].to_s}, placeholder: f_adr[:placeholder], class: "form-control", disabled: f_adr[:blocked] %>
+                  <% end %>
+                <% elsif f_adr[:type] == "select" %>
+                  <%= adr.select(f_adr[:name], f_adr[:collection].map {|opt| [opt.acronym, opt.id]}, {}, {class: "form-control"}) %>              
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if model == :owner && weapons != nil %>
+        <div class="box-header with-border">
+          <h4 class="box-title"><%= weapon_list_title %></h4>
+        </div>
+        <% weapons.each do |weapon| %>
+          <div class: "box box-info">
+            <%= render 'shared/form_adtional', adtional_model: weapon, adtional_fields: adtional_fields %>
+          </div>
+        <% end %>
+      <% end %>
+      <% if (model == :weapon_acquisition || :munition_acquisition || :renovate)  %>
+        <div class="box-header with-border">
+          <h4 class="box-title"><%= "#{StrHelper.system_i18n(:add, [:helpers, :layouts])} #{StrHelper.model_i18n(:one, [:requirement])}" %></h4>
+        </div>
+        <%= render 'shared/form_adtional', adtional_model: :requirement, adtional_fields: requirement_fields, form: form %>
+        <% if model == :weapon_acquisition && weapon != nil %>
+          <div class="box-header with-border">
+            <h4 class="box-title"><%= "#{StrHelper.system_i18n(:add, [:helpers, :layouts])} #{StrHelper.model_i18n(:one, [:weapon])}" %></h4>
+          </div>
+          <%= render 'shared/form_adtional', adtional_model: :weapon, adtional_fields: weapon_fields, form: form %>
+        <% end %>
+      <% end %>
+    </div>    
+    <div class="box-footer">
+      <%= link_to StrHelper.system_i18n(:back, [:helpers, :layouts]), {controller: controller, action: :index}, class:"btn btn-default" %>            
+      <% if (action == "Adicionar") || (action == "Atualizar")  %>
+        <button type="submit" class="btn btn-success pull-right"><%= action %></button>   
+      <% end %>
+    </div> <!-- /.box-footer -->
+  <% end %>
+</div>

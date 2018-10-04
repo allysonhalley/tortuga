@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TortugaCollectorWeb</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+    <!-- Main Navbar -->
+    <%= render 'layouts/shared/navbar' %>
+    <!-- Main Sidebar -->
+    <%= render 'layouts/shared/sidebar' %>
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content container-fluid">
+        <%= yield %>
+      </section>
+    </div> <!-- /.content -->
+  </div> <!-- /.content-wrapper -->
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= render 'layouts/shared/flash' %>
+</body>
+</html>
